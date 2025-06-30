@@ -491,7 +491,7 @@ export default function AdminDashboard() {
             </motion.div>
           ))}
         </div>
-        
+
         {/*Auto allocation*/}
         <div className="flex justify-center">
           <Button
@@ -548,6 +548,39 @@ export default function AdminDashboard() {
             </div>
           </GlassCard>
         </motion.div>
+        {/* Assigned Projects Table */}
+<GlassCard className="p-6 mt-10" glow>
+  <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+    Current Project Assignments
+  </h2>
+  <div className="overflow-auto rounded-lg shadow">
+    <table className="min-w-full text-sm text-left text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-800">
+      <thead className="bg-gray-200 dark:bg-gray-700">
+        <tr>
+          <th className="px-4 py-2 border">Project</th>
+          <th className="px-4 py-2 border">Assigned To</th>
+          <th className="px-4 py-2 border">Estimated Hours</th>
+        </tr>
+      </thead>
+      <tbody>
+        {projects.filter(p => p.assigned).map(p => {
+          const intern = interns.find(i =>
+            report.find(r => r.project_id === p.id && r.intern_id === i.id)
+          );
+          const assignedIntern = intern?.email || 'Unknown';
+          return (
+            <tr key={p.id} className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
+              <td className="border px-4 py-2">{p.name}</td>
+              <td className="border px-4 py-2">{assignedIntern}</td>
+              <td className="border px-4 py-2">{p.estimated_hours}h</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</GlassCard>
+
 
         {/* Completed Projects Report */}
         <motion.div
