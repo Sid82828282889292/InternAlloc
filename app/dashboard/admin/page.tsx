@@ -491,6 +491,21 @@ export default function AdminDashboard() {
             </motion.div>
           ))}
         </div>
+        
+        {/*Auto allocation*/}
+        <div className="flex justify-center">
+          <Button
+            onClick={async () => {
+              const res = await fetch('/api/allocate', { method: 'POST' });
+              const result = await res.json();
+              alert(result.success ? '✅ Auto-allocation complete!' : `❌ ${result.error}`);
+            }}
+            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:opacity-90 mb-10"
+          >
+            Auto Allocate Projects
+          </Button>
+        </div>
+
 
         {/* Interns Section */}
         <motion.div

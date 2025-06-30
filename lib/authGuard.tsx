@@ -1,12 +1,14 @@
 'use client';
 
+import React from 'react'; // ✅ Required for JSX types
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from './supabaseClient';
+import { access } from 'fs';
 
 type Props = {
   children: React.ReactNode;
-  role?: 'admin' | 'intern'; // Optional
+  role?: 'admin' | 'intern';
 };
 
 export default function AuthGuard({ children, role }: Props) {
@@ -36,7 +38,7 @@ export default function AuthGuard({ children, role }: Props) {
       }
 
       if (role && data.role !== role) {
-        router.push('/'); // Or show access denied
+        router.push('/');
         return;
       }
 

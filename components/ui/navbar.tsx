@@ -118,18 +118,18 @@ export function Navbar({ userRole }: NavbarProps) {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="hidden md:flex">
                   <Code className="mr-2 h-4 w-4" />
-                  Developer
+                  Meet the Dev
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
                 <div className="px-3 py-2">
-                  <p className="text-sm font-medium">Built by Developer</p>
-                  <p className="text-xs text-gray-500">Full Stack Developer</p>
+                  <p className="text-sm font-medium">Built by Siddhant Gupta</p>
+                  <p className="text-xs text-gray-500">A Tech Enthusiast</p>
                 </div>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <a
-                    href="https://github.com"
+                    href="https://github.com/Sid82828282889292"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center"
@@ -140,7 +140,7 @@ export function Navbar({ userRole }: NavbarProps) {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/siddhant-gupta-aa9044320"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center"
@@ -151,7 +151,7 @@ export function Navbar({ userRole }: NavbarProps) {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <a
-                    href="mailto:developer@example.com"
+                    href="mailto:fabulous.siddhant@gmail.com"
                     className="flex items-center"
                   >
                     <Mail className="mr-2 h-4 w-4" />
