@@ -3,27 +3,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Mail, Heart, ExternalLink } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    {
-      name: "GitHub",
-      href: "https://github.com",
-      icon: Github,
-    },
-    {
-      name: "LinkedIn",
-      href: "https://linkedin.com",
-      icon: Linkedin,
-    },
-    {
-      name: "Email",
-      href: "mailto:developer@example.com",
-      icon: Mail,
-    },
+    { name: "GitHub", href: "https://github.com/Sid82828282889292", icon: Github },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/siddhant-gupta-aa9044320", icon: Linkedin },
+    { name: "Email", href: "mailto:fabulous.siddhant@gmail.com", icon: Mail },
   ];
 
   return (
@@ -32,11 +20,11 @@ export function Footer() {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="border-t border-gray-200/20 dark:border-gray-800/20 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm"
+      className="border-t border-gray-200/20 dark:border-gray-800/20 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm mt-12"
     >
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Logo and Description */}
+      <div className="container mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-700 dark:text-gray-300">
+        {/* Brand Info */}
+        <div>
           <div className="flex items-center space-x-3">
             <motion.div
               whileHover={{ rotate: 360 }}
@@ -54,9 +42,37 @@ export function Footer() {
               </p>
             </div>
           </div>
+          <p className="text-xs mt-10">
+            &copy; {currentYear} Made with{" "}
+            <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1, repeat: Infinity }}>
+              <Heart className="inline-block h-3 w-3 text-red-500 fill-current" />
+            </motion.span>{" "}
+            by Siddhant Gupta
+          </p>
+        </div>
 
-          {/* Social Links */}
-          <div className="flex items-center space-x-4">
+        {/* Sections */}
+        <div>
+          <h3 className="font-medium text-gray-900 dark:text-white mb-2">Explore</h3>
+          <ul className="space-y-1">
+            <li>
+              <Link href="/contact-me" className="hover:underline">Contact Me</Link>
+            </li>
+            <li>
+              <a href="https://my-portfolio-lemon-gamma-92.vercel.app/" target="_blank" className="flex items-center gap-1 hover:underline">
+                Portfolio <ExternalLink className="h-3 w-3" />
+              </a>
+            </li>
+            <li>
+              <Link href="/terms" className="hover:underline">Terms & Conditions</Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Socials */}
+        <div>
+          <h3 className="font-medium text-gray-900 dark:text-white mb-2">Socials</h3>
+          <div className="flex space-x-3">
             {socialLinks.map((link) => (
               <motion.a
                 key={link.name}
@@ -64,27 +80,11 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
-                aria-label={link.name}
+                className="h-8 w-8 flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white"
               >
                 <link.icon className="h-4 w-4" />
               </motion.a>
             ))}
-          </div>
-
-          {/* Copyright */}
-          <div className="text-center md:text-right">
-            <p className="text-xs text-gray-600 dark:text-gray-300 flex items-center gap-1">
-              © {currentYear} Made with{" "}
-              <motion.span
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
-                <Heart className="h-3 w-3 text-red-500 fill-current" />
-              </motion.span>{" "}
-              by Developer
-            </p>
           </div>
         </div>
       </div>
