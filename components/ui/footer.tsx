@@ -1,0 +1,93 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Github, Linkedin, Mail, Heart } from "lucide-react";
+
+export function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    {
+      name: "GitHub",
+      href: "https://github.com",
+      icon: Github,
+    },
+    {
+      name: "LinkedIn",
+      href: "https://linkedin.com",
+      icon: Linkedin,
+    },
+    {
+      name: "Email",
+      href: "mailto:developer@example.com",
+      icon: Mail,
+    },
+  ];
+
+  return (
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="border-t border-gray-200/20 dark:border-gray-800/20 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm"
+    >
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Logo and Description */}
+          <div className="flex items-center space-x-3">
+            <motion.div
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.5 }}
+              className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600"
+            >
+              <span className="text-sm font-bold text-white">IA</span>
+            </motion.div>
+            <div className="text-center md:text-left">
+              <p className="text-sm font-medium text-gray-900 dark:text-white">
+                InternAlloc
+              </p>
+              <p className="text-xs text-gray-600 dark:text-gray-300">
+                Smart Intern Project Allocation
+              </p>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex items-center space-x-4">
+            {socialLinks.map((link) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
+                aria-label={link.name}
+              >
+                <link.icon className="h-4 w-4" />
+              </motion.a>
+            ))}
+          </div>
+
+          {/* Copyright */}
+          <div className="text-center md:text-right">
+            <p className="text-xs text-gray-600 dark:text-gray-300 flex items-center gap-1">
+              © {currentYear} Made with{" "}
+              <motion.span
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1, repeat: Infinity }}
+              >
+                <Heart className="h-3 w-3 text-red-500 fill-current" />
+              </motion.span>{" "}
+              by Developer
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.footer>
+  );
+}
