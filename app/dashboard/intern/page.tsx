@@ -430,6 +430,7 @@ import { GlassCard } from "@/components/ui/glass-card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import AuthGuard from "@/lib/authGuard";
 import {
   Dialog,
   DialogContent,
@@ -543,6 +544,7 @@ export default function InternDashboard() {
   const monthlyProgress = goalHours > 0 ? (currentHours / goalHours) * 100 : 0;
 
   return (
+    <AuthGuard role="intern">
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <Navbar userRole="intern" />
 
@@ -740,5 +742,6 @@ export default function InternDashboard() {
         </div>
       )}
     </div>
+    </AuthGuard>
   );
 }

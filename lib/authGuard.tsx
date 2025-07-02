@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from './supabaseClient';
 import { access } from 'fs';
-
 type Props = {
   children: React.ReactNode;
   role?: 'admin' | 'intern';
@@ -52,3 +51,4 @@ export default function AuthGuard({ children, role }: Props) {
 
   return <>{children}</>;
 }
+

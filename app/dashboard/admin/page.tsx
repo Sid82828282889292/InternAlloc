@@ -333,6 +333,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import dynamic from "next/dynamic";
+import AuthGuard from "@/lib/authGuard";
 
 const AdminCharts = dynamic(() => import("@/components/AdminCharts"), {
   ssr: false,
@@ -445,6 +446,7 @@ export default function AdminDashboard() {
   };
 
   return (
+    <AuthGuard role="admin">
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <Navbar userRole="admin" />
 
@@ -653,5 +655,6 @@ export default function AdminDashboard() {
         </div>
       )}
     </div>
+    </AuthGuard>
   );
 }
